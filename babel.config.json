@@ -1,0 +1,30 @@
+{
+  "presets": [
+    [
+      "react-app",
+      {
+        "runtime": "automatic"
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "babel-plugin-transform-remove-console",
+      {
+        "exclude": ["error", "warn"]
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-transform-remove-console",
+          {
+            "exclude": ["error"]
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,233 @@
+/* Loading Component Styles */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 200px;
+}
+
+.loading-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Modern Circle Spinner */
+.loading-content .loading-spinner {
+  position: relative;
+  display: inline-block;
+}
+
+.loading-content .loading-circle {
+  position: absolute;
+  border-radius: 50%;
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+.loading-circle-1 {
+  animation-delay: 0s;
+}
+
+.loading-circle-2 {
+  animation-delay: 0.5s;
+}
+
+.loading-circle-3 {
+  animation-delay: 1s;
+}
+
+/* Size variants */
+.loading-content .loading-small {
+  width: 30px;
+  height: 30px;
+}
+
+.loading-content .loading-small .loading-circle {
+  width: 8px;
+  height: 8px;
+  top: 11px;
+  left: 11px;
+}
+
+.loading-content .loading-medium {
+  width: 50px;
+  height: 50px;
+}
+
+.loading-content .loading-medium .loading-circle {
+  width: 12px;
+  height: 12px;
+  top: 19px;
+  left: 19px;
+}
+
+.loading-content .loading-large {
+  width: 80px;
+  height: 80px;
+}
+
+.loading-content .loading-large .loading-circle {
+  width: 20px;
+  height: 20px;
+  top: 30px;
+  left: 30px;
+}
+
+/* Color variants */
+.loading-content .loading-primary .loading-circle {
+  background: linear-gradient(45deg, #3182ce, #63b3ed);
+}
+
+.loading-content .loading-secondary .loading-circle {
+  background: linear-gradient(45deg, #718096, #a0aec0);
+}
+
+.loading-content .loading-success .loading-circle {
+  background: linear-gradient(45deg, #38a169, #68d391);
+}
+
+.loading-content .loading-warning .loading-circle {
+  background: linear-gradient(45deg, #d69e2e, #f6e05e);
+}
+
+.loading-content .loading-error .loading-circle {
+  background: linear-gradient(45deg, #e53e3e, #feb2b2);
+}
+
+/* Pulse Animation */
+@keyframes loading-pulse {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* Loading Message */
+.loading-message {
+  margin: 0;
+  font-size: 1rem;
+  color: #4a5568;
+  font-weight: 500;
+  text-align: center;
+  animation: loading-fade 2s ease-in-out infinite;
+}
+
+@keyframes loading-fade {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Loading Dots Variant */
+.loading-dots {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.loading-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #3182ce, #63b3ed);
+  animation: loading-bounce 1.4s ease-in-out infinite both;
+}
+
+.loading-dot:nth-child(1) { animation-delay: -0.32s; }
+.loading-dot:nth-child(2) { animation-delay: -0.16s; }
+.loading-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes loading-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Loading Bar Variant */
+.loading-bar-container {
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3182ce, #63b3ed, #3182ce);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: loading-bar-move 1.5s ease-in-out infinite;
+  width: 100%;
+}
+
+@keyframes loading-bar-move {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .loading-fullscreen {
+    background: rgba(26, 32, 44, 0.95);
+  }
+  
+  .loading-message {
+    color: #cbd5e0;
+  }
+  
+  .loading-bar {
+    background: #4a5568;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .loading-container {
+    padding: 2rem 1rem;
+    min-height: 150px;
+  }
+  
+  .loading-message {
+    font-size: 0.9rem;
+  }
+  
+  .loading-bar-container {
+    width: 150px;
+  }
+}

@@ -1,0 +1,29 @@
+/* AccountLink Component Styles */
+.account-link {
+  color: var(--accent-secondary, #06d6a0) !important;
+  text-decoration: none;
+  transition: all var(--transition-fast, 150ms ease-in-out);
+  cursor: pointer;
+}
+
+.account-link:hover {
+  color: var(--accent-blue, #22d3ee) !important;
+  text-decoration: none;
+}
+
+.account-link:visited {
+  color: var(--accent-secondary, #06d6a0) !important;
+}
+
+.account-link:active {
+  color: var(--accent-blue, #22d3ee) !important;
+}
+
+/* For maintaining specific styling in different contexts */
+.account-link.inherit-color {
+  color: inherit;
+}
+
+.account-link.inherit-color:hover {
+  color: var(--accent-secondary, #06d6a0);
+}

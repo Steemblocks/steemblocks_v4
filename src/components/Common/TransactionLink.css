@@ -1,0 +1,51 @@
+/* TransactionLink Component Styles */
+.transaction-link {
+  color: var(--accent-purple, #8b5cf6);
+  text-decoration: none;
+  transition: all var(--transition-fast, 150ms ease-in-out);
+  cursor: pointer;
+  font-family: 'Courier New', Consolas, monospace;
+  font-weight: 500;
+}
+
+.transaction-link:hover {
+  color: var(--accent-blue, #22d3ee);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.transaction-link:visited {
+  color: var(--accent-purple, #8b5cf6);
+}
+
+.transaction-link:active {
+  color: var(--accent-blue, #22d3ee);
+}
+
+/* Transaction placeholder for missing/invalid IDs */
+.transaction-placeholder {
+  color: var(--text-muted, #94a3b8);
+  font-style: italic;
+  font-family: 'Courier New', Consolas, monospace;
+}
+
+/* For maintaining specific styling in different contexts */
+.transaction-link.inherit-color {
+  color: inherit;
+}
+
+.transaction-link.inherit-color:hover {
+  color: var(--accent-purple, #8b5cf6);
+}
+
+/* Compact variant for tables */
+.transaction-link.compact {
+  font-size: 0.85em;
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.transaction-link.compact:hover {
+  background: rgba(139, 92, 246, 0.2);
+}

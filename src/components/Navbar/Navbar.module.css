@@ -1,0 +1,580 @@
+/* Navbar Component Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 20;
+  box-shadow: var(--shadow);
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  padding: 0 var(--spacing-lg);
+  background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+  border-bottom: 1px solid #2a3441;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Force remove all link styling from React Router Link */
+.desktopNav a,
+.desktopNav a:link,
+.desktopNav a:visited,
+.desktopNav a:hover,
+.desktopNav a:active,
+.desktopNav a:focus {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-underline-offset: unset !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.brandContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-primary);
+  text-decoration: none !important;
+  transition: none;
+}
+
+.brandContainer:hover {
+  color: var(--color-primary);
+  text-decoration: none !important;
+}
+
+/* Override all possible link states */
+.brandContainer:link,
+.brandContainer:visited,
+.brandContainer:hover,
+.brandContainer:active,
+.brandContainer:focus {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-underline-offset: unset !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.logo {
+  height: 2.5rem;
+  width: 2.5rem;
+  object-fit: contain;
+  transition: all var(--transition-slow);
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.brandText {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #06d6a0, #0ea5e9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: none;
+  text-decoration: none !important;
+  border: none;
+  outline: none;
+  text-underline-offset: unset;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+}
+
+/* Desktop Login/Profile Styles */
+.loginButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, #06d6a0, #0ea5e9);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.loginButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.4);
+}
+
+/* User Profile Dropdown */
+.userProfileDropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.profileButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.2);
+}
+
+.profileImage {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(6, 214, 160, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.profileButton:hover .profileImage {
+  border-color: rgba(6, 214, 160, 0.6);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--spacing-xs);
+  background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+  border: 1px solid rgba(6, 214, 160, 0.2);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  min-width: 160px;
+  z-index: 100;
+  animation: dropdownSlide 0.2s ease-out;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: #f8fafc;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: 0;
+}
+
+.dropdownItem:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.dropdownItem:last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.dropdownItem:hover {
+  background: rgba(6, 214, 160, 0.1);
+  color: rgba(6, 214, 160, 1);
+}
+
+.dropdownItem svg {
+  font-size: 1.125rem;
+}
+
+.dropdownItem.logout {
+  color: #f87171;
+}
+
+.dropdownItem.logout:hover {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+/* Mobile Navigation */
+.mobileNav {
+  display: block;
+  background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+  border-bottom: 1px solid #2a3441;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+/* Force remove all link styling from React Router Link in mobile */
+.mobileNav a,
+.mobileNav a:link,
+.mobileNav a:visited,
+.mobileNav a:hover,
+.mobileNav a:active,
+.mobileNav a:focus {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-underline-offset: unset !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.mobileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--navbar-height);
+  padding: 0 var(--spacing-md);
+  position: relative;
+  z-index: 998;
+}
+
+.mobileBrand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.mobileBrand:hover {
+  color: var(--color-primary-hover);
+}
+
+.mobileLogo {
+  height: 2rem;
+  width: 2rem;
+  object-fit: contain;
+  transition: all var(--transition-slow);
+}
+
+.mobileLogo:hover {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.mobileBrandText {
+  font-size: 2.125rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #06d6a0, #0ea5e9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all var(--transition-normal);
+}
+
+.mobileControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Mobile User Profile Dropdown */
+.mobileUserProfileDropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Ensure this container doesn't interfere with clicks */
+  z-index: 999;
+}
+
+.mobileProfileButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileProfileButton:hover {
+  transform: scale(1.05);
+}
+
+.mobileProfileImage {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(6, 214, 160, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.mobileProfileButton:hover .mobileProfileImage {
+  border-color: rgba(6, 214, 160, 0.6);
+}
+
+.mobileDropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--spacing-xs);
+  background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+  border: 1px solid rgba(6, 214, 160, 0.2);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  min-width: 140px;
+  z-index: 1000;
+  animation: dropdownSlide 0.2s ease-out;
+  /* Ensure dropdown appears above other elements */
+  pointer-events: auto;
+}
+
+.mobileDropdownItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  color: #f8fafc;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: 0;
+  pointer-events: auto;
+  z-index: 1001;
+  position: relative;
+}
+
+.mobileDropdownItem:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.mobileDropdownItem:last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.mobileDropdownItem:hover {
+  background: rgba(6, 214, 160, 0.1);
+  color: rgba(6, 214, 160, 1);
+}
+
+.mobileDropdownItem svg {
+  font-size: 1rem;
+}
+
+.mobileDropdownItem.logout {
+  color: #f87171;
+}
+
+.mobileDropdownItem.logout:hover {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+.mobileLoginButton {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.8rem;
+  background: linear-gradient(135deg, #06d6a0, #0ea5e9);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #1e293b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mobileLoginButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.4);
+}
+
+.mobileMenuBtn {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: colors var(--transition-fast);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  background: none;
+  border: none;
+}
+
+.mobileMenuBtn:hover {
+  color: var(--color-primary);
+  background-color: var(--bg-tertiary);
+}
+
+/* Mobile Menu Dropdown */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  display: block;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 30;
+  background: linear-gradient(180deg, #1a2332 0%, #0f1419 100%);
+  border-bottom: 1px solid #2a3441;
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  max-height: calc(100vh - var(--navbar-height) - 2rem);
+  overflow-y: auto;
+}
+
+/* Hide Mobile Menu Scrollbar */
+.mobileMenu::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileMenu {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.menuContent {
+  padding: 1.5rem;
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #2a3441;
+}
+
+.menuTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #06d6a0;
+  background: linear-gradient(135deg, #06d6a0, #0ea5e9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.closeBtn {
+  color: #94a3b8;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  background: rgba(6, 214, 160, 0.1);
+  border: 1px solid rgba(6, 214, 160, 0.2);
+  cursor: pointer;
+  font-size: 1.125rem;
+}
+
+.closeBtn:hover {
+  color: #06d6a0;
+  background: rgba(6, 214, 160, 0.2);
+  transform: scale(1.05);
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.menuLink::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #06d6a0, #0ea5e9);
+  transform: scaleY(0);
+  transition: transform var(--transition-fast);
+}
+
+.menuLink:hover {
+  background: rgba(6, 214, 160, 0.1);
+  color: #f8fafc;
+  border-color: rgba(6, 214, 160, 0.2);
+}
+
+.menuLink:hover::before {
+  transform: scaleY(1);
+}
+
+.menuIcon {
+  font-size: 1.375rem;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuText {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .mobileNav {
+    display: none;
+  }
+  
+  .desktopNav {
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktopNav {
+    height: var(--navbar-height-lg);
+    padding: 0 var(--spacing-xl);
+  }
+}

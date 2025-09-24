@@ -1,0 +1,8 @@
+/* Arial Regular Font - Only used font variant */
+
+@font-face {
+  font-family: 'Arial Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Arial Regular'), url('ARIAL.woff') format('woff');
+}

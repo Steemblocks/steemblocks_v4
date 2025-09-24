@@ -1,0 +1,811 @@
+/* ===== ACCOUNT RANKING PAGE STYLES ===== */
+
+/* Loading Spinner - Now handled by Loading component */
+
+/* Header Stats */
+.header-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(6, 214, 160, 0.1);
+  border: 1px solid rgba(6, 214, 160, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  min-width: 100px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #06d6a0;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+}
+
+/* Controls Section */
+.controls-section {
+  background: rgba(26, 35, 50, 0.5);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(6, 214, 160, 0.1);
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.control-label {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.sort-select {
+  background: rgba(15, 20, 25, 0.8);
+  border: 1px solid rgba(6, 214, 160, 0.3);
+  border-radius: 8px;
+  color: #f8fafc;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.sort-select:hover {
+  border-color: #06d6a0;
+}
+
+.sort-select:focus {
+  border-color: #06d6a0;
+  box-shadow: 0 0 0 2px rgba(6, 214, 160, 0.2);
+}
+
+.sort-order-btn {
+  background: linear-gradient(135deg, #06d6a0, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sort-order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.4);
+}
+
+/* Desktop Table Styles */
+.desktop-only {
+  width: 100%;
+  display: block;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  background: rgba(26, 35, 50, 0.6);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(6, 214, 160, 0.1);
+  backdrop-filter: blur(10px);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  border-radius: 12px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add subtle scroll indicator for mobile */
+@media (max-width: 768px) {
+  .table-wrapper {
+    border: 1px solid rgba(6, 214, 160, 0.2);
+    box-shadow: inset 0 0 0 1px rgba(6, 214, 160, 0.1);
+  }
+  
+  .table-wrapper::after {
+    content: '← Scroll →';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: rgba(6, 214, 160, 0.2);
+    color: #06d6a0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* ========================================
+   ACCOUNT RANKING PAGE LAYOUT
+   ======================================== */
+
+/* Ensure full width for AccountRanking page */
+.dashboard-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.page-header {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.header-content {
+  width: 100%;
+}
+
+.modern-title {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #06d6a0, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 8px rgba(6, 214, 160, 0.3);
+  text-align: left;
+}
+
+.modern-subtitle {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.page-description {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+/* ===== TABLE CONTAINER STYLES ===== */
+.headers-reference-card {
+  background: rgba(26, 35, 50, 0.6);
+  border: 1px solid rgba(6, 214, 160, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.table-scroll-container {
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+.headers-reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+.headers-reference-table th {
+  background: rgba(6, 214, 160, 0.1);
+  color: #06d6a0;
+  font-weight: 700;
+  text-align: left;
+  padding: 1rem 0.75rem;
+  border-bottom: 2px solid rgba(6, 214, 160, 0.3);
+}
+
+.headers-reference-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  color: #f8fafc;
+}
+
+.reference-row:hover {
+  background: rgba(6, 214, 160, 0.05);
+}
+
+/* ========================================
+   CLEAN ACCOUNT RANKING TABLE STYLES
+   ======================================== */
+
+/* Main Table Container */
+.data-table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  table-layout: fixed;
+}
+
+/* Table Header */
+.data-table thead {
+  background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+}
+
+.data-table th {
+  padding: 1rem;
+  color: #f8fafc;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #06d6a0;
+  position: relative;
+}
+
+.data-table th:first-child { text-align: center; width: 8%; }
+.data-table th:nth-child(2) { text-align: left; width: 28%; }
+.data-table th:nth-child(3) { text-align: right; width: 12%; }
+.data-table th:nth-child(4) { text-align: right; width: 15%; }
+.data-table th:nth-child(5) { text-align: right; width: 12%; }
+.data-table th:nth-child(6) { text-align: right; width: 15%; }
+.data-table th:last-child { text-align: center; width: 10%; }
+
+/* Table Body */
+.data-table tbody tr {
+  background: rgba(26, 35, 50, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(6, 214, 160, 0.1);
+  transform: translateX(2px);
+}
+
+.data-table td {
+  padding: 1rem;
+  color: #e2e8f0;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.data-table td:first-child { text-align: center; }
+.data-table td:nth-child(2) { text-align: left; }
+.data-table td:nth-child(n+3) { text-align: right; }
+.data-table td:last-child { text-align: center; }
+
+/* Rank Badge Styles */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  min-width: 50px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rank-badge-first {
+  background: linear-gradient(135deg, #ff8c00, #ffb84d);
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+}
+
+.rank-badge-second {
+  background: linear-gradient(135deg, #ff8c00, #ffa64d, #ffffff);
+  color: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+}
+
+.rank-badge-third {
+  background: linear-gradient(135deg, #ff8c00, #ffb84d, #ffdddd, #ffffff);
+  color: #1a1a1a;
+  box-shadow: 0 4px 10px rgba(255, 140, 0, 0.2);
+}
+
+.rank-badge-silver {
+  background: linear-gradient(135deg, #c0c0c0, #e5e7eb);
+  color: #1a1a1a;
+}
+
+.rank-badge-bronze {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  color: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rank-badge-default {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  color: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Account Info Styles */
+.account-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(6, 214, 160, 0.3);
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
+}
+
+.profile-avatar:hover {
+  border-color: #06d6a0;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.account-link {
+  color: #06d6a0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.account-link:hover {
+  color: #22d3ee;
+}
+
+.account-rep {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Numeric and Value Styles */
+.numeric-cell {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.value-cell {
+  font-weight: 600;
+}
+
+.usd-value {
+  color: #06d6a0;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.activity-cell {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.value-cell {
+  text-align: right;
+}
+
+.usd-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #10b981;
+  font-family: 'Courier New', monospace;
+}
+
+.voting-info {
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.voting-info div {
+  margin-bottom: 2px;
+}
+
+.activity-cell {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Responsive Design for AccountRanking */
+@media (max-width: 992px) {
+  .header-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .primary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .secondary-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .pagination-dots {
+    font-size: 1rem;
+    padding: 0 0.25rem;
+  }
+
+  /* Responsive Table Styles */
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* Hide Last Activity column on tablets */
+  .data-table th:nth-child(7),
+  .data-table td:nth-child(7) {
+    display: none;
+  }
+
+  .profile-avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .account-link {
+    font-size: 0.9rem;
+  }
+
+  .account-rep {
+    font-size: 0.75rem;
+  }
+
+  .rank-badge {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .primary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .secondary-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-row {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  /* Mobile Phone Responsive */
+  .data-table th,
+  .data-table td {
+    padding: 0.5rem 0.375rem;
+    font-size: 0.8rem;
+  }
+
+  /* Hide SP and SBD columns on mobile */
+  .data-table th:nth-child(3),
+  .data-table th:nth-child(5),
+  .data-table td:nth-child(3),
+  .data-table td:nth-child(5) {
+    display: none;
+  }
+
+  .profile-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .account-link {
+    font-size: 0.85rem;
+  }
+
+  .account-rep {
+    font-size: 0.7rem;
+  }
+
+  .rank-badge {
+    padding: 0.25rem 0.375rem;
+    font-size: 0.75rem;
+  }
+
+  .usd-value {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== REF TABLE STYLES ===== */
+.ref-rank {
+  font-weight: 700;
+  color: #06d6a0;
+  width: 80px;
+  text-align: center;
+}
+
+.ref-rank .rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  min-width: 50px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ref-account {
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  min-width: 180px;
+}
+
+.ref-account-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.ref-profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(6, 214, 160, 0.3);
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
+}
+
+.ref-profile-avatar:hover {
+  border-color: #06d6a0;
+}
+
+.ref-account-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.ref-account-link {
+  color: #22d3ee !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.ref-account-link:hover {
+  color: #06d6a0 !important;
+}
+
+/* Ensure account links are never affected by column styling */
+.ref-account .ref-account-link,
+.reference-row .ref-account .ref-account-link {
+  color: #22d3ee !important;
+}
+
+.ref-account .ref-account-link:hover,
+.reference-row .ref-account .ref-account-link:hover {
+  color: #06d6a0 !important;
+}
+
+.ref-account-rep {
+  font-size: 0.8rem;
+  color: #06d6a0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ref-account-rep.negative-rep {
+  color: #ef4444 !important;
+}
+
+/* Ref table column styles */
+.ref-steempower, .ref-steem, .ref-sbd, .ref-balance {
+  text-align: right;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0.75rem 0.5rem;
+}
+
+/* ===== PAGINATION STYLES ===== */
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, 
+    rgba(15, 20, 25, 0.8) 0%, 
+    rgba(26, 35, 50, 0.6) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  margin-top: 2rem;
+  border: 1px solid rgba(6, 214, 160, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.pagination-text {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.pagination-text strong {
+  color: #06d6a0;
+  font-weight: 700;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination-btn {
+  background: rgba(26, 35, 50, 0.9);
+  border: 1px solid rgba(6, 214, 160, 0.4);
+  color: #f8fafc;
+  padding: 0.875rem 1.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #06d6a0, #22d3ee);
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(6, 214, 160, 0.4);
+  color: #ffffff;
+}
+
+.pagination-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(6, 214, 160, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) .btn-icon {
+  transform: translateX(3px);
+}
+
+.prev-btn:hover:not(:disabled) .btn-icon {
+  transform: translateX(-3px);
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 1rem;
+}
+
+.page-number {
+  background: rgba(26, 35, 50, 0.8);
+  border: 1px solid rgba(6, 214, 160, 0.3);
+  color: #f8fafc;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-number:hover {
+  background: linear-gradient(135deg, #06d6a0, #22d3ee);
+  border-color: transparent;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+}
+
+.page-number.active {
+  background: linear-gradient(135deg, #06d6a0, #22d3ee);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(6, 214, 160, 0.4);
+}
+
+.pagination-dots {
+  color: #64748b;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== BALANCE COLUMN GREEN STYLING ===== */
+/* Make only the Balance column data green colored */
+.ref-balance {
+  color: #22c55e !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.4) !important;
+  font-family: 'Courier New', monospace !important;
+  text-align: right;
+  font-size: 0.95em;
+  background: rgba(34, 197, 94, 0.05);
+  border-radius: 4px;
+  padding: 4px 8px !important;
+}
+
+/* Hover effect for balance column only */
+.reference-row:hover .ref-balance {
+  color: #16a34a !important;
+  text-shadow: 0 0 12px rgba(22, 163, 74, 0.6) !important;
+}
