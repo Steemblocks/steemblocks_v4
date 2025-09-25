@@ -136,9 +136,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #06d6a0;
+  color: var(--text-primary);
   margin: 0 0 1.5rem 0;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid rgba(6, 214, 160, 0.2);

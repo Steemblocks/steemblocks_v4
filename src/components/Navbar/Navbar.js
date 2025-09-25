@@ -6,7 +6,7 @@ import {
   AiOutlineOrderedList,
   AiFillThunderbolt,
 } from "react-icons/ai";
-import { FaPowerOff } from "react-icons/fa";
+import { FaPowerOff, FaCogs } from "react-icons/fa";
 import { RiCommunityFill } from "react-icons/ri";
 import { GrHistory } from "react-icons/gr";
 import { BiSolidUserAccount } from "react-icons/bi";
@@ -297,6 +297,14 @@ export default function Navbar() {
                   >
                     <AiOutlineOrderedList className={styles.menuIcon} />
                     <span className={styles.menuText}>Witness List</span>
+                  </Link>
+                  <Link
+                    to="/witness-monitor"
+                    className={styles.menuLink}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <FaCogs className={styles.menuIcon} />
+                    <span className={styles.menuText}>Witness Monitor</span>
                   </Link>
                   <Link
                     to="/community-data"

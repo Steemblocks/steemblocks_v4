@@ -6,11 +6,16 @@ import './SteemPrice.css';
 const SteemPrice = () => {
   const [blockchainData, setBlockchainData] = useState(null);
   const [priceData, setPriceData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [blockchainLoading, setBlockchainLoading] = useState(true);
+  const [priceLoading, setPriceLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showExchangeModal, setShowExchangeModal] = useState(false);
   const [selectedCoin, setSelectedCoin] = useState(null);
   const [lastUpdate, setLastUpdate] = useState(new Date());
+  const [initialLoad, setInitialLoad] = useState(true);
+
+  // Combined loading state - only false when both data sources are loaded AND initial load is complete
+  const loading = blockchainLoading || priceLoading || initialLoad;
 
   // Fetch blockchain global properties with live updates
   const fetchBlockchainData = async () => {
@@ -40,11 +45,11 @@ const SteemPrice = () => {
 
       setBlockchainData(result.result);
       setLastUpdate(new Date());
-      setLoading(false);
+      setBlockchainLoading(false);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching blockchain data:', err);
-      setLoading(false);
+      setBlockchainLoading(false);
     }
   };
 
@@ -72,15 +77,26 @@ const SteemPrice = () => {
 
         const data = await response.json();
         setPriceData(data);
-        setLoading(false);
+        setPriceLoading(false);
       } catch (err) {
         console.error('Error fetching price data:', err);
-        setLoading(false);
+        setPriceLoading(false);
       }
     };
 
     fetchPriceData();
   }, []);
+
+  // Manage initial loading state - only set to false when both data sources are loaded
+  useEffect(() => {
+    if (!blockchainLoading && !priceLoading) {
+      // Add a small delay to prevent flash of content
+      const timer = setTimeout(() => {
+        setInitialLoad(false);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [blockchainLoading, priceLoading]);
 
   // Utility functions
   const formatPrice = (price) => {
